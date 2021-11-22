@@ -24,17 +24,20 @@ namespace ManejoArchivos4
 
             try
             {
-                openFileDialog1.ShowDialog();
-                string texto = openFileDialog1.FileName;
-
-                if (File.Exists(openFileDialog1.FileName))
+                if (openFileDialog1.ShowDialog() == DialogResult.OK);
                 {
-                    TextReader leer = new StreamReader(texto);
-                    textBox2.Text = leer.ReadToEnd();
-                    leer.Close();
-                }
 
-                textBox1.Text = texto;
+                    if (File.Exists(openFileDialog1.FileName))
+                    {
+                        string texto = openFileDialog1.FileName;
+
+                        TextReader leer = new StreamReader(texto);
+                        textBox2.Text = leer.ReadToEnd();
+                        leer.Close();
+
+                        textBox1.Text = texto;
+                    }
+                }
             }
             catch (Exception)
             {
